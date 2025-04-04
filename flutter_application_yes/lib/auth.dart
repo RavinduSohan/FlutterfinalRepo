@@ -25,3 +25,4 @@ class Auth {
     await _firebaseAuth.signOut();
   }
 }
+
