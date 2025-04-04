@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   List<String> _suggestions = [];
   bool _showSuggestions = false;
 
-  List<Subject> _mostViewedSubjects = [
+  final List<Subject> _mostViewedSubjects = [
     Subject(
       name: "Astronomy", 
       imagePath: "assets/astronomy.jpg",
@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
 
-  List<Subject> _trendingSubjects = [
+  final List<Subject> _trendingSubjects = [
     Subject(
       name: "Machine Learning",
       imagePath: "assets/machine_learning.jpg",
@@ -150,7 +150,7 @@ class _HomePageState extends State<HomePage> {
     ),
   ];
 
-  List<Subject> _latestSubjects = [
+  final List<Subject> _latestSubjects = [
     Subject(
       name: "Blockchain",
       imagePath: "assets/machine_learning.jpg",
@@ -227,7 +227,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Reload favorites when the page is focused
+    
     _loadFavorites();
   }
 
@@ -283,7 +283,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // Toggle favorite status
+  
   void _toggleFavorite(Subject subject) async {
     final isFavorite = _favoriteStatus[subject.name] ?? false;
     
@@ -298,7 +298,7 @@ class _HomePageState extends State<HomePage> {
     await _saveFavorites(subject, !isFavorite);
   }
 
-  // Save favorites to SharedPreferences
+  
   Future<void> _saveFavorites(Subject subject, bool add) async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -310,7 +310,7 @@ class _HomePageState extends State<HomePage> {
       }
       
       if (add) {
-        // Check if already exists
+        
         if (!favorites.any((f) => f['name'] == subject.name)) {
           favorites.add({
             'name': subject.name,
@@ -428,7 +428,7 @@ class _HomePageState extends State<HomePage> {
                 _buildTabs(),
                 const SizedBox(height: 20),
                 _buildSubjectGrid(),
-                const SizedBox(height: 80), // Add extra bottom padding for the navigation bar
+                const SizedBox(height: 80), 
               ],
             ),
           ),
@@ -651,7 +651,7 @@ class _HomePageState extends State<HomePage> {
                   subjectName: subject.name,
                 ),
               ),
-            ).then((_) => _loadFavorites()); // Refresh favorites when returning
+            ).then((_) => _loadFavorites()); 
           },
           child: SubjectCard(
             subject: subject,
@@ -683,7 +683,7 @@ class Subject {
     required this.category,
   });
   
-  // Add these methods for JSON serialization
+  
   Map<String, dynamic> toJson() {
     return {
       'name': name,
@@ -736,7 +736,7 @@ class SubjectCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              // Add favorite button overlay
+             
               Positioned(
                 top: 8,
                 right: 8,

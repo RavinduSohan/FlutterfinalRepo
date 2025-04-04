@@ -28,17 +28,17 @@ class _RecentSearchesPageState extends State<RecentSearchesPage> {
     try {
       final prefs = await SharedPreferences.getInstance();
       
-      // Get existing searches or create empty list
+      
       List<String> searchesJson = prefs.getStringList('recent_searches') ?? [];
       List<Map<String, dynamic>> searches = searchesJson
           .map((s) => jsonDecode(s) as Map<String, dynamic>)
           .toList();
       
-      // Filter out searches older than 7 days
+     
       final sevenDaysAgo = DateTime.now().subtract(const Duration(days: 7)).millisecondsSinceEpoch;
       searches = searches.where((s) => s['timestamp'] >= sevenDaysAgo).toList();
       
-      // Save filtered list back to shared preferences
+     
       final filteredSearchesJson = searches
           .map((s) => jsonEncode(s))
           .toList();

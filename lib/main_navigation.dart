@@ -16,7 +16,7 @@ class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
   final PageStorageBucket _bucket = PageStorageBucket();
   
-  // Use keys to maintain state of each page
+  
   final List<GlobalKey<NavigatorState>> _navigatorKeys = [
     GlobalKey<NavigatorState>(),
     GlobalKey<NavigatorState>(),
@@ -25,7 +25,7 @@ class _MainNavigationState extends State<MainNavigation> {
     GlobalKey<NavigatorState>(),
   ];
 
-  // Create pages on demand to ensure they're refreshed
+ 
   Widget _getPage(int index) {
     switch (index) {
       case 0:

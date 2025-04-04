@@ -14,7 +14,7 @@ class FavoritesPage extends StatefulWidget {
 class _FavoritesPageState extends State<FavoritesPage> {
   List<Subject> _favoriteSubjects = [];
   bool _isLoading = true;
-  int _currentNavIndex = 2; // Heart icon index
+  int _currentNavIndex = 2; 
 
   @override
   void initState() {
@@ -59,7 +59,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
       final prefs = await SharedPreferences.getInstance();
       final favoritesJson = prefs.getStringList('favorite_subjects') ?? [];
       
-      // Remove the subject from the list
+     
       final updatedFavoritesJson = favoritesJson.where((json) {
         final Map<String, dynamic> data = jsonDecode(json);
         return data['name'] != subject.name;
@@ -208,7 +208,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     return InkWell(
       onTap: () {
         if (index == 0) {
-          // Home icon
+          
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const HomePage()),

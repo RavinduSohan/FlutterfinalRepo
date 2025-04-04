@@ -63,13 +63,13 @@ class _SubjectDetailPageState extends State<SubjectDetailPage> {
       });
       
       if (_isFavorite) {
-        // Check if already exists
+       
         if (!favorites.any((f) => f['name'] == widget.subjectName)) {
           favorites.add({
             'name': widget.subjectName,
             'imagePath': _getImagePathForSubject(),
-            'rating': 4.8, // Default rating
-            'category': 'General', // Default category
+            'rating': 4.8, 
+            'category': 'General', 
           });
         }
       } else {
@@ -111,7 +111,7 @@ class _SubjectDetailPageState extends State<SubjectDetailPage> {
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
-          // Add favorite button to app bar for easier access
+          
           IconButton(
             icon: Icon(
               _isFavorite ? Icons.favorite : Icons.favorite_border,
